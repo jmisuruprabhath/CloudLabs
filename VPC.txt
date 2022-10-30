@@ -1,0 +1,42 @@
+1) Create VPC - name, ip
+
+2) Create subnets
+	If normal, 2 subnets for private and public
+	If load balancer there, 2 private subnets in 2 availability zones
+
+	Created VPC, Subnets (Subnet name, AZ, IPv4 block)
+
+3) Create internet gateway - Gateway name
+
+4) Attach internet gateway to VPC (Select VPC, actions, attach to VPC)
+
+5) Create Route tables - Select VPC
+
+6) Select route table created , 
+	1) go to routes (at below), edit routes, add route (Des - 0.0.0.0/0, Target - Internet gateway and select IG)
+	2) go to subnet associations, edit subnet associations (Explicit), select subnets, save
+
+7) Go to VPC, select VPC, actions, edit dns hostname, enable dns host names
+
+8) Go to EC2, network security, security groups, create SG (name, description, VPC),
+	Inbound rules (SSH - MyIP, HTTP - Anywhere IPv4)
+
+9) Auto scaling, auto scaling groups, create ASG, switch to launch config (As in assignment), Create a launch config
+	(name, AMI (Seach by AMI id), instance type (May be t2.micro), additional config, advanced details, user data (Add data given), Assign a public IP to every instance
+
+10) Select an existing security grp, select SG created
+
+11) Key pair, Create a new key pair(name), download KPair
+
+12) Go to previous tab, regresh launch config, select created SG
+
+13) Config settings, select VPC, add subnets
+
+14) Attach a new load balancer (Application LB, name, Internet facing, select subnets for availability zones, default routing, create a new target grp (name)
+
+15) Select grp size (1,1,1), add a tag (Name, <Your Name>)
+
+16) Go to load balancing, load balancers, copy DNS , paste and check url in browser
+
+
+	
